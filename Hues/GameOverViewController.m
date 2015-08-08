@@ -80,7 +80,7 @@
     NSInteger spacing = width/60;
     double tileWidth = (width-(3+1)*spacing)/3.00;
     restartButton.adjustsImageWhenHighlighted = false;
-    restartButton.frame = CGRectMake(16 + ((self.view.frame.size.width-40)/2 - tileWidth)/2, self.view.frame.size.width*0.2 + 158, tileWidth, tileWidth);
+    restartButton.frame = CGRectMake(16 + ((self.view.frame.size.width-40)/2 - tileWidth)/2, self.view.frame.size.height - tileWidth - (16 + ((self.view.frame.size.width-40)/2 - tileWidth)/2), tileWidth, tileWidth);
     [restartButton setImage:[UIImage imageNamed:@"restart.png"] forState:UIControlStateNormal];
     restartButton.backgroundColor = [UIColor huesBlue];
     [restartButton addTarget:self action:@selector(playAgain:) forControlEvents:UIControlEventTouchUpInside];
@@ -93,7 +93,7 @@
     
     storeButton = [TileButton buttonWithType:UIButtonTypeCustom];
     storeButton.adjustsImageWhenHighlighted = false;
-    storeButton.frame = CGRectMake(24+(self.view.frame.size.width-40)/2 + ((self.view.frame.size.width-40)/2 - tileWidth)/2, self.view.frame.size.width*0.2 + 158, tileWidth, tileWidth);
+    storeButton.frame = CGRectMake(24+(self.view.frame.size.width-40)/2 + ((self.view.frame.size.width-40)/2 - tileWidth)/2, self.view.frame.size.height - tileWidth - (16 + ((self.view.frame.size.width-40)/2 - tileWidth)/2), tileWidth, tileWidth);
     [storeButton setImage:[UIImage imageNamed:@"powerups_2.png"] forState:UIControlStateNormal];
     storeButton.backgroundColor = [UIColor huesPink];
     //[storeButton addTarget:self action:@selector(playAgain:) forControlEvents:UIControlEventTouchUpInside];
@@ -129,7 +129,8 @@
 }
 
 - (IBAction)playAgain:(id)sender {
-    //[self.navigationController popViewControllerAnimated:true];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.drewsdunne.hues.restartGame" object:nil];
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (IBAction)backButtonPressed:(id)sender {

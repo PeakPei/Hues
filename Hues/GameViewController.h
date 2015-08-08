@@ -20,6 +20,7 @@
     
     PauseAlertView *pauseView;
     
+    BOOL shouldRestartGame;
     UIColor *selectedColor;
     UIColor *discoloredColor;
     NSInteger discoloredTile;

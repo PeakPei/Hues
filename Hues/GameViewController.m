@@ -48,6 +48,26 @@ void GVControlSoundManagerAudioServicesSystemSoundCompletionProc (SystemSoundID 
     pauseView.delegate = self;
     [self.view addSubview:pauseView];
     
+    shouldRestartGame = NO;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartGameReceived) name:@"com.drewsdunne.hues.restartGame" object:nil];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (shouldRestartGame) {
+        selectedColor = [UIColor getRandomHue];
+        [self resetScore];
+        [self reset];
+        [gridView updateTileImagesAnimated:false];
+        [gridView updateTileColorAnimated:false];
+        [gridView setAllTilesEnabled:true];
+        shouldRestartGame = NO;
+    }
+}
+
+- (void)restartGameReceived {
+    shouldRestartGame = YES;
 }
 
 - (NSString *)soundForTileWithTag:(NSInteger)tag {

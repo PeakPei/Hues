@@ -52,6 +52,9 @@ const CGFloat kPauseLabelHeight = 60.0;
     [mainView addSubview:pauseLabel];
     
     buttonSpacing = self.frame.size.height * 0.04;
+    if (buttonSpacing < 20) {
+        buttonSpacing = 8;
+    }
     buttonHeight = (super.frame.size.height/2 - kPauseLabelHeight - 10 - 4*buttonSpacing)/3;
     
     resumeButton = [[HuesButton alloc] initWithColor:[UIColor huesBlue]];

@@ -11,7 +11,7 @@
 @implementation UIColor (Hues)
 
 + (UIColor *)huesBlue {
-    //
+    // 5691C7
     return [UIColor colorWithRed:0.337 green:0.588 blue:0.78 alpha:1];
 }
 
