@@ -12,13 +12,15 @@
 #import "GridView.h"
 #import "GameInfoView.h"
 #import "ScoreModel.h"
-#import "PauseAlertView.h"
+//#import "PauseAlertView.h"
+#import "PauseCover.h"
 
-@interface GameViewController : UIViewController  <GridViewDelegate, PauseAlertViewDelegate> {
+@interface GameViewController : UIViewController  <GridViewDelegate, PauseCoverDelegate> {
     GridView *gridView;
     GameInfoView *gameInfoView;
     
-    PauseAlertView *pauseView;
+//    PauseAlertView *pauseView;
+    PauseCover *pauseView;
     
     BOOL shouldRestartGame;
     UIColor *selectedColor;
@@ -27,6 +29,8 @@
     NSInteger varyR;
     NSInteger varyG;
     NSInteger varyB;
+    CGFloat varyH;
+    NSInteger round;
     
     NSInteger score;
     NSInteger time;

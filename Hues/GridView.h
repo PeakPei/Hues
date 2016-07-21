@@ -48,5 +48,7 @@
 
 - (void)setAllTilesEnabled:(BOOL)enabled;
 - (void)setTilesEnabledWithArray:(NSArray *)enabledTiles;
+- (void)setSmallerGridContainingTiles:(NSArray *)enabledTiles;
+- (void)showAllTiles;
 
 @end

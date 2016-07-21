@@ -98,10 +98,11 @@
         case 5:
             //Fade out
             //Leaderboard/Achievements View load
+            [self performSegueWithIdentifier:@"scores_view" sender:nil];
             break;
         case 6:
             //Fade Out
-            //[self performSegueWithIdentifier:@"showHowTo" sender:nil];
+            [self performSegueWithIdentifier:@"powerups_from_home" sender:nil];
             break;
             
             

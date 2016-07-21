@@ -17,6 +17,7 @@ const CGFloat kHuesButtonNormalLineWidth = 2.0;
     HuesButton *button = [HuesButton buttonWithType:UIButtonTypeCustom];
     button.defaultColor = color;
     button.backgroundColor = color;
+    button.titleLabel.font = [UIFont monospacedDigitSystemFontOfSize:14 weight:0.1];
     return button;
 }
 
@@ -29,6 +30,7 @@ const CGFloat kHuesButtonNormalLineWidth = 2.0;
         self.backgroundColor = color;
         [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+        self.titleLabel.font = [UIFont monospacedDigitSystemFontOfSize:12 weight:0.1];
         self.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 8);
         self.layer.cornerRadius = self.bounds.size.height/2;
     }
@@ -37,7 +39,7 @@ const CGFloat kHuesButtonNormalLineWidth = 2.0;
 
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
-    self.layer.cornerRadius = self.bounds.size.height/2;
+    self.layer.cornerRadius = self.frame.size.height/2;
 }
 
 - (void)setHighlighted:(BOOL)highlighted {

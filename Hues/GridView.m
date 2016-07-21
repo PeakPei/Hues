@@ -215,6 +215,36 @@
     }
 }
 
+- (void)setSmallerGridContainingTiles:(NSArray *)enabledTiles {
+    NSInteger i = 0;
+    for (NSInteger row = 0; row < self.tilesPerRow; row++) {
+        for (NSInteger column = 0; column < self.tilesPerRow; column++) {
+            TileButton *tileButton = (TileButton *)[self viewWithTag:i+1];
+            if ([enabledTiles containsObject:[NSNumber numberWithInteger:i+1]]) {
+                tileButton.enabled = true;
+            } else {
+                tileButton.enabled = false;
+                [UIView beginAnimations:@"highlight" context:nil];
+                [UIView setAnimationDuration:0.5];
+                tileButton.alpha = 0.5;
+                [UIView commitAnimations];
+            }
+            i++;
+        }
+    }
+}
+
+- (void)showAllTiles {
+    NSInteger i = 0;
+    for (NSInteger row = 0; row < self.tilesPerRow; row++) {
+        for (NSInteger column = 0; column < self.tilesPerRow; column++) {
+            TileButton *tileButton = (TileButton *)[self viewWithTag:i+1];
+            tileButton.alpha = 1;
+            i++;
+        }
+    }
+}
+
 - (void)setButtonSoundWithPath:(NSString *)pathForSound forControlEvents:(UIControlEvents)events {
     NSInteger i = 0;
     for (NSInteger row = 0; row < self.tilesPerRow; row++) {

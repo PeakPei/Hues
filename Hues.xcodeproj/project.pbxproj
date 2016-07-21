@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD2AC9541CDD035500B8793C /* PowerupView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2AC9531CDD035500B8793C /* PowerupView.m */; };
+		FD4FA7701CB7437E00F4EE02 /* PauseCover.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4FA76F1CB7437E00F4EE02 /* PauseCover.m */; };
 		FD5C8D8A1B64026A00162DEE /* ScoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5C8D891B64026A00162DEE /* ScoreModel.m */; };
 		FD5C8D8D1B6433CE00162DEE /* GameInfoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5C8D8C1B6433CE00162DEE /* GameInfoButton.m */; };
 		FD5C8D8F1B6438C600162DEE /* pause.wav in Resources */ = {isa = PBXBuildFile; fileRef = FD5C8D8E1B6438C600162DEE /* pause.wav */; };
 		FD5C8D911B64399000162DEE /* skip.wav in Resources */ = {isa = PBXBuildFile; fileRef = FD5C8D901B64399000162DEE /* skip.wav */; };
-		FD5C8D941B64921E00162DEE /* PauseAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5C8D931B64921E00162DEE /* PauseAlertView.m */; };
 		FD760D9D1B5DC4ED00C34D7E /* TileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FD760D9C1B5DC4ED00C34D7E /* TileButton.m */; };
 		FD760DA01B5F2C3800C34D7E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD760D9F1B5F2C3800C34D7E /* HomeViewController.m */; };
 		FD760DA31B5F2C7C00C34D7E /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD760DA21B5F2C7C00C34D7E /* GridView.m */; };
+		FD8DDC3F1B7A8A53000087F2 /* ScoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8DDC3E1B7A8A53000087F2 /* ScoresViewController.m */; };
+		FD8DDC421B7A945D000087F2 /* PowerupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8DDC411B7A945D000087F2 /* PowerupsViewController.m */; };
+		FDA088031CD10A59005B7851 /* PowerupDescView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA088021CD10A59005B7851 /* PowerupDescView.m */; };
+		FDA39F711CD40E7500A72909 /* PowerupPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA39F701CD40E7500A72909 /* PowerupPurchaseView.m */; };
 		FDB502331B70119100426778 /* HuesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB502321B70119100426778 /* HuesButton.m */; };
 		FDC23AF01B4B5DD700C6CB34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC23AEF1B4B5DD700C6CB34 /* main.m */; };
 		FDC23AF31B4B5DD700C6CB34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC23AF21B4B5DD700C6CB34 /* AppDelegate.m */; };
@@ -49,23 +54,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD2AC9521CDD035500B8793C /* PowerupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerupView.h; sourceTree = "<group>"; };
+		FD2AC9531CDD035500B8793C /* PowerupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerupView.m; sourceTree = "<group>"; };
+		FD4FA76E1CB7437E00F4EE02 /* PauseCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseCover.h; sourceTree = "<group>"; };
+		FD4FA76F1CB7437E00F4EE02 /* PauseCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseCover.m; sourceTree = "<group>"; };
 		FD5C8D881B64026A00162DEE /* ScoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreModel.h; sourceTree = "<group>"; };
 		FD5C8D891B64026A00162DEE /* ScoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreModel.m; sourceTree = "<group>"; };
 		FD5C8D8B1B6433CE00162DEE /* GameInfoButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameInfoButton.h; sourceTree = "<group>"; };
 		FD5C8D8C1B6433CE00162DEE /* GameInfoButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameInfoButton.m; sourceTree = "<group>"; };
 		FD5C8D8E1B6438C600162DEE /* pause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = pause.wav; path = sounds/pause.wav; sourceTree = "<group>"; };
 		FD5C8D901B64399000162DEE /* skip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = skip.wav; path = sounds/skip.wav; sourceTree = "<group>"; };
-		FD5C8D921B64921E00162DEE /* PauseAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseAlertView.h; sourceTree = "<group>"; };
-		FD5C8D931B64921E00162DEE /* PauseAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseAlertView.m; sourceTree = "<group>"; };
 		FD760D9B1B5DC4ED00C34D7E /* TileButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileButton.h; sourceTree = "<group>"; };
 		FD760D9C1B5DC4ED00C34D7E /* TileButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileButton.m; sourceTree = "<group>"; };
 		FD760D9E1B5F2C3800C34D7E /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		FD760D9F1B5F2C3800C34D7E /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		FD760DA11B5F2C7C00C34D7E /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
 		FD760DA21B5F2C7C00C34D7E /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
+		FD8DDC3D1B7A8A53000087F2 /* ScoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoresViewController.h; sourceTree = "<group>"; };
+		FD8DDC3E1B7A8A53000087F2 /* ScoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoresViewController.m; sourceTree = "<group>"; };
+		FD8DDC401B7A945D000087F2 /* PowerupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerupsViewController.h; sourceTree = "<group>"; };
+		FD8DDC411B7A945D000087F2 /* PowerupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerupsViewController.m; sourceTree = "<group>"; };
+		FDA088011CD10A59005B7851 /* PowerupDescView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerupDescView.h; sourceTree = "<group>"; };
+		FDA088021CD10A59005B7851 /* PowerupDescView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerupDescView.m; sourceTree = "<group>"; };
+		FDA39F6F1CD40E7500A72909 /* PowerupPurchaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerupPurchaseView.h; sourceTree = "<group>"; };
+		FDA39F701CD40E7500A72909 /* PowerupPurchaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerupPurchaseView.m; sourceTree = "<group>"; };
 		FDB502311B70119100426778 /* HuesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuesButton.h; sourceTree = "<group>"; };
 		FDB502321B70119100426778 /* HuesButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuesButton.m; sourceTree = "<group>"; };
-		FDB502341B70124000426778 /* defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
 		FDC23AEA1B4B5DD700C6CB34 /* Hues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hues.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDC23AEE1B4B5DD700C6CB34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDC23AEF1B4B5DD700C6CB34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -175,7 +189,6 @@
 		FDC23AED1B4B5DD700C6CB34 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FDB502341B70124000426778 /* defines.h */,
 				FDC23AEE1B4B5DD700C6CB34 /* Info.plist */,
 				FDC23AEF1B4B5DD700C6CB34 /* main.m */,
 			);
@@ -223,14 +236,20 @@
 				FD5C8D8C1B6433CE00162DEE /* GameInfoButton.m */,
 				FDFF8BFE1B4CAC2200190325 /* GameInfoView.h */,
 				FDFF8BFF1B4CAC2200190325 /* GameInfoView.m */,
-				FD5C8D921B64921E00162DEE /* PauseAlertView.h */,
-				FD5C8D931B64921E00162DEE /* PauseAlertView.m */,
+				FD4FA76E1CB7437E00F4EE02 /* PauseCover.h */,
+				FD4FA76F1CB7437E00F4EE02 /* PauseCover.m */,
+				FDA39F6F1CD40E7500A72909 /* PowerupPurchaseView.h */,
+				FDA39F701CD40E7500A72909 /* PowerupPurchaseView.m */,
 				FDB502311B70119100426778 /* HuesButton.h */,
 				FDB502321B70119100426778 /* HuesButton.m */,
 				FDC7D4D71B62D76200942322 /* DividerView.h */,
 				FDC7D4D81B62D76200942322 /* DividerView.m */,
 				FDC7D4DA1B62D95100942322 /* NavView.h */,
 				FDC7D4DB1B62D95100942322 /* NavView.m */,
+				FDA088011CD10A59005B7851 /* PowerupDescView.h */,
+				FDA088021CD10A59005B7851 /* PowerupDescView.m */,
+				FD2AC9521CDD035500B8793C /* PowerupView.h */,
+				FD2AC9531CDD035500B8793C /* PowerupView.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -244,6 +263,10 @@
 				FDC7D4C51B6092D400942322 /* GameViewController.m */,
 				FDC7D4CA1B62B50000942322 /* GameOverViewController.h */,
 				FDC7D4CB1B62B50000942322 /* GameOverViewController.m */,
+				FD8DDC3D1B7A8A53000087F2 /* ScoresViewController.h */,
+				FD8DDC3E1B7A8A53000087F2 /* ScoresViewController.m */,
+				FD8DDC401B7A945D000087F2 /* PowerupsViewController.h */,
+				FD8DDC411B7A945D000087F2 /* PowerupsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -314,7 +337,7 @@
 		FDC23AE21B4B5DD700C6CB34 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Drew Dunne";
 				TargetAttributes = {
 					FDC23AE91B4B5DD700C6CB34 = {
@@ -397,17 +420,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD5C8D941B64921E00162DEE /* PauseAlertView.m in Sources */,
+				FDA39F711CD40E7500A72909 /* PowerupPurchaseView.m in Sources */,
+				FDA088031CD10A59005B7851 /* PowerupDescView.m in Sources */,
 				FDC7D4CC1B62B50000942322 /* GameOverViewController.m in Sources */,
 				FD760D9D1B5DC4ED00C34D7E /* TileButton.m in Sources */,
 				FDC23AF61B4B5DD700C6CB34 /* ViewController.m in Sources */,
+				FD2AC9541CDD035500B8793C /* PowerupView.m in Sources */,
 				FDC23AF31B4B5DD700C6CB34 /* AppDelegate.m in Sources */,
 				FD5C8D8A1B64026A00162DEE /* ScoreModel.m in Sources */,
+				FD8DDC421B7A945D000087F2 /* PowerupsViewController.m in Sources */,
 				FDC7D4C61B6092D400942322 /* GameViewController.m in Sources */,
 				FDC23AF01B4B5DD700C6CB34 /* main.m in Sources */,
 				FD760DA01B5F2C3800C34D7E /* HomeViewController.m in Sources */,
 				FDC7D4D61B62C30D00942322 /* NSString+MD5.m in Sources */,
 				FDC7D4D91B62D76200942322 /* DividerView.m in Sources */,
+				FD4FA7701CB7437E00F4EE02 /* PauseCover.m in Sources */,
+				FD8DDC3F1B7A8A53000087F2 /* ScoresViewController.m in Sources */,
 				FD5C8D8D1B6433CE00162DEE /* GameInfoButton.m in Sources */,
 				FDC23B161B4B5E9500C6CB34 /* GridContainer.m in Sources */,
 				FDFF8C001B4CAC2200190325 /* GameInfoView.m in Sources */,
@@ -478,6 +506,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -493,7 +522,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -531,7 +560,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -548,6 +577,7 @@
 				INFOPLIST_FILE = Hues/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.drewsdunne.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -562,6 +592,7 @@
 				INFOPLIST_FILE = Hues/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.drewsdunne.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -571,16 +602,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = HuesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.drewsdunne.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hues.app/Hues";
 			};
@@ -590,12 +619,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = HuesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.drewsdunne.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hues.app/Hues";
 			};

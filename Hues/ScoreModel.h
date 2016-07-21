@@ -10,19 +10,44 @@
 #import <GameKit/GameKit.h>
 #import "AppDelegate.h"
 
-@interface ScoreModel : NSObject {
+typedef enum : NSUInteger {
+    PUSkip,
+    PUAddTime,
+    PU2x2,
+} PUType;
+
+@interface ScoreModel : NSObject <NSCoding> {
     AppDelegate *appDelegate;
 }
 
 @property (nonatomic) NSInteger totalPoints;
+@property (nonatomic) NSInteger highScore;
+@property (nonatomic) NSInteger latestScore;
 @property (nonatomic) NSInteger totalSkips;
+@property (nonatomic) NSInteger totalAddTime;
+@property (nonatomic) NSInteger total2x2;
 
-+ (id)sharedScoreModel;
++ (instancetype)sharedScoreModel;
 - (id)init;
+
+- (void)saveData;
 
 - (BOOL)reportScore:(NSInteger)score withHash:(NSString *)hash;
 
+- (BOOL)purchasePowerupWithType:(PUType)puType;
+
 - (BOOL)purchaseSkipPowerup;
 - (BOOL)useSkipPowerup;
+
+- (BOOL)purchaseAddTimePowerup;
+- (BOOL)useAddTimePowerup;
+
+- (BOOL)purchase2x2Powerup;
+- (BOOL)use2x2Powerup;
+
+- (NSString *)titleForPUType:(PUType)powerupType;
+- (NSInteger)priceForPUType:(PUType)powerupType;
+- (NSInteger)amountForPUType:(PUType)powerupType;
+- (UIImage *)imageForPUType:(PUType)powerupType;
 
 @end

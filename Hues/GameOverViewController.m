@@ -19,12 +19,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //High Score Verification
-    /*NSString *hash = [[NSUserDefaults standardUserDefaults] valueForKey:@"_8gy*wa+f"];
-    if ([hash rangeOfString:@"F3A71G9E"].location == NSNotFound) {
-        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"high_score"];
-    }*/
-    
     //Create Nav view
     NavView *nav = [[NavView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
     nav.titleLabel.text = @"Game Over";
@@ -96,7 +90,7 @@
     storeButton.frame = CGRectMake(24+(self.view.frame.size.width-40)/2 + ((self.view.frame.size.width-40)/2 - tileWidth)/2, self.view.frame.size.height - tileWidth - (16 + ((self.view.frame.size.width-40)/2 - tileWidth)/2), tileWidth, tileWidth);
     [storeButton setImage:[UIImage imageNamed:@"powerups_2.png"] forState:UIControlStateNormal];
     storeButton.backgroundColor = [UIColor huesPink];
-    //[storeButton addTarget:self action:@selector(playAgain:) forControlEvents:UIControlEventTouchUpInside];
+    [storeButton addTarget:self action:@selector(storePressed:) forControlEvents:UIControlEventTouchUpInside];
     storeButton.enabled = true;
     storeButton.opaque = true;
     storeButton.layer.borderWidth = 0;
@@ -104,33 +98,38 @@
     [storeButton addSoundWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"touch" ofType:@"wav"] forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:storeButton];
     
-    NSInteger latestScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"latest_score"];
-    NSString *latestHash = [[NSUserDefaults standardUserDefaults] valueForKey:@"^RFH&)#D"];
-    NSString *latestScoreString = [NSString stringWithFormat:@"F3A7%ld1G9E",(long)latestScore];
-    NSMutableString *magicLatestCheck = [latestScoreString MD5String].mutableCopy;
-    if (![latestHash isEqualToString:magicLatestCheck]) {
-        NSLog(@"Cheater!");
-        latestScore = 0;
-    }
+//    NSInteger latestScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"latest_score"];
+//    NSString *latestHash = [[NSUserDefaults standardUserDefaults] valueForKey:@"^RFH&)#D"];
+//    NSString *latestScoreString = [NSString stringWithFormat:@"F3A7%ld1G9E",(long)latestScore];
+//    NSMutableString *magicLatestCheck = [latestScoreString MD5String].mutableCopy;
+//    if (![latestHash isEqualToString:magicLatestCheck]) {
+//        NSLog(@"Cheater!");
+//        latestScore = 0;
+//    }
+//    
+//    NSInteger highScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"high_score"];
+//    NSString *highHash = [[NSUserDefaults standardUserDefaults] valueForKey:@"_8gy*wa+f"];
+//    
+//    NSString *highScoreString = [NSString stringWithFormat:@"F3A7%ld1G9E",(long)highScore];
+//    NSMutableString *magicHighCheck = [highScoreString MD5String].mutableCopy;
+//    
+//    if (![highHash isEqualToString:magicHighCheck]) {
+//        NSLog(@"Cheater!");
+//        highScore = 0;
+//    }
     
-    NSInteger highScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"high_score"];
-    NSString *highHash = [[NSUserDefaults standardUserDefaults] valueForKey:@"_8gy*wa+f"];
-    
-    NSString *highScoreString = [NSString stringWithFormat:@"F3A7%ld1G9E",(long)highScore];
-    NSMutableString *magicHighCheck = [highScoreString MD5String].mutableCopy;
-    
-    if (![highHash isEqualToString:magicHighCheck]) {
-        NSLog(@"Cheater!");
-        highScore = 0;
-    }
-    
-    scoreLabel.text = [NSString stringWithFormat:@"%ld",(long)latestScore];
-    highScoreLabel.text = [NSString stringWithFormat:@"%ld",(long)highScore];
+    scoreLabel.text = [NSString stringWithFormat:@"%ld",(long)[[ScoreModel sharedScoreModel] latestScore]];
+    highScoreLabel.text = [NSString stringWithFormat:@"%ld",(long)[[ScoreModel sharedScoreModel] highScore]];
 }
 
 - (IBAction)playAgain:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"com.drewsdunne.hues.restartGame" object:nil];
     [self.navigationController popViewControllerAnimated:true];
+}
+
+- (IBAction)storePressed:(id)sender {
+//    [self.navigationController popViewControllerAnimated:true];
+    [self performSegueWithIdentifier:@"powerups_from_end" sender:self];
 }
 
 - (IBAction)backButtonPressed:(id)sender {

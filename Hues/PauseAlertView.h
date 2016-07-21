@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "defines.h"
+#import "HuesButton.h"
 
 typedef enum : NSUInteger {
     PauseAlertViewIndexNone,
