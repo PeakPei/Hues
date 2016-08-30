@@ -29,9 +29,9 @@
     [nav.backButton addTarget:self action:@selector(backButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nav];
     
-    CGFloat distFromNav = 30;
+    CGFloat distFromNav = 50;
     if ([[ UIScreen mainScreen] bounds].size.height < 568)
-        distFromNav = 10;
+        distFromNav = 30;
     
     p2x2View = [[PowerupView alloc] initWithFrame:CGRectMake(0, distFromNav+50, self.view.frame.size.width, 160)];
     [p2x2View setPU:PU2x2];
@@ -51,11 +51,103 @@
     addTimeView.tag = 3;
     [self.view addSubview:addTimeView];
     
-    DividerView *horDivider = [[DividerView alloc] initWithFrame:CGRectMake((self.view.frame.size.width*0.2)/2, 50+2*distFromNav+160, self.view.frame.size.width*0.8, 2)];
-    [self.view addSubview:horDivider];
+    double viewDist = 50+2*distFromNav+160+2;
+    if ([[ UIScreen mainScreen] bounds].size.width >= 375) {
+        DividerView *horDivider = [[DividerView alloc] initWithFrame:CGRectMake((self.view.frame.size.width*0.2)/2, 50+2*distFromNav+160, self.view.frame.size.width*0.8, 2)];
+        [self.view addSubview:horDivider];
+    } else {
+        viewDist = 50+distFromNav+160+2;
+    }
+//    UILabel *needMorePointsLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 50+2*distFromNav+160 + 16, self.view.frame.size.width-32, 22)];
+//    needMorePointsLabel.text = @"Need More Points?";
+//    needMorePointsLabel.textColor = [UIColor darkHuesBlueText];
+//    needMorePointsLabel.font = [UIFont fontWithName:@"Avenir Next Medium" size:18];
+//    needMorePointsLabel.textAlignment = NSTextAlignmentCenter;
+//    needMorePointsLabel.alpha = 1.0f;
+//    [self.view addSubview:needMorePointsLabel];
+    
+    
+    UIView *iapContainer = [[UIView alloc] initWithFrame:CGRectMake(0, viewDist, self.view.frame.size.width, self.view.frame.size.height - viewDist - 80)];
+    [self.view addSubview:iapContainer];
+    
+    UILabel *needMoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, (iapContainer.frame.size.height-84)/2, self.view.frame.size.width-32, 30)];
+    needMoreLabel.text = @"Need More Points?";
+    needMoreLabel.textColor = [UIColor darkHuesBlueText];
+    needMoreLabel.font = [UIFont fontWithName:@"Avenir Next Medium" size:26];
+    needMoreLabel.textAlignment = NSTextAlignmentCenter;
+    needMoreLabel.alpha = 1.0f;
+    [iapContainer addSubview:needMoreLabel];
+    
+    HuesButton *buyMoreButton = [HuesButton buttonWithColor:[UIColor huesBlue]];
+    buyMoreButton.frame = CGRectMake(self.view.frame.size.width*0.1, (iapContainer.frame.size.height-84)/2 + 38, self.view.frame.size.width*0.8, 46);
+    [buyMoreButton setTitle:@"Yes I do" forState:UIControlStateNormal];
+    [buyMoreButton addTarget:self action:@selector(iapPressed) forControlEvents:UIControlEventTouchUpInside];
+    [iapContainer addSubview:buyMoreButton];
+
+    
+//    double labelAndButtonHeight = 22+8+30;
+//    double viewHeight = iapContainer.frame.size.height;
+//    double spacer = (viewHeight - 2*labelAndButtonHeight)/3;
+//    const double gap = 24;
+//    
+//    UILabel *points2500 = [[UILabel alloc] initWithFrame:CGRectMake(16, spacer, self.view.frame.size.width/2-32, 22)];
+//    points2500.text = @"2500 Points";
+//    points2500.textColor = [UIColor darkHuesBlueText];
+//    points2500.font = [UIFont fontWithName:@"Avenir Next Medium" size:16];
+//    points2500.textAlignment = NSTextAlignmentCenter;
+//    points2500.alpha = 1.0f;
+//    [iapContainer addSubview:points2500];
+//
+//    HuesButton *buy2500 = [HuesButton buttonWithColor:[UIColor huesBlue]];
+//    buy2500.frame = CGRectMake(gap, spacer+22+8, self.view.frame.size.width/2 - 2*gap, 30);
+//    [buy2500 setTitle:@"$0.99" forState:UIControlStateNormal];
+//    [buy2500 addTarget:self action:@selector(iapPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [iapContainer addSubview:buy2500];
+//
+//    UILabel *points7500 = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2+16, spacer, self.view.frame.size.width/2-32, 22)];
+//    points7500.text = @"7500 Points";
+//    points7500.textColor = [UIColor darkHuesBlueText];
+//    points7500.font = [UIFont fontWithName:@"Avenir Next Medium" size:16];
+//    points7500.textAlignment = NSTextAlignmentCenter;
+//    points7500.alpha = 1.0f;
+//    [iapContainer addSubview:points7500];
+//    
+//    HuesButton *buy7500 = [HuesButton buttonWithColor:[UIColor huesBlue]];
+//    buy7500.frame = CGRectMake(self.view.frame.size.width/2+gap, spacer+22+8, self.view.frame.size.width/2 - 2*gap, 30);
+//    [buy7500 setTitle:@"$1.99" forState:UIControlStateNormal];
+//    [buy7500 addTarget:self action:@selector(iapPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [iapContainer addSubview:buy7500];
+//    
+//    UILabel *points30000 = [[UILabel alloc] initWithFrame:CGRectMake(16, 2*spacer+labelAndButtonHeight, self.view.frame.size.width/2-32, 22)];
+//    points30000.text = @"30,000 Points";
+//    points30000.textColor = [UIColor darkHuesBlueText];
+//    points30000.font = [UIFont fontWithName:@"Avenir Next Medium" size:16];
+//    points30000.textAlignment = NSTextAlignmentCenter;
+//    points30000.alpha = 1.0f;
+//    [iapContainer addSubview:points30000];
+//    
+//    HuesButton *buy30000 = [HuesButton buttonWithColor:[UIColor huesBlue]];
+//    buy30000.frame = CGRectMake(gap, 2*spacer+labelAndButtonHeight+22+8, self.view.frame.size.width/2 - 2*gap, 30);
+//    [buy30000 setTitle:@"$4.99" forState:UIControlStateNormal];
+//    [buy30000 addTarget:self action:@selector(iapPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [iapContainer addSubview:buy30000];
+//    
+//    UILabel *points100000 = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2+16, 2*spacer+labelAndButtonHeight, self.view.frame.size.width/2-32, 22)];
+//    points100000.text = @"100000 Points";
+//    points100000.textColor = [UIColor darkHuesBlueText];
+//    points100000.font = [UIFont fontWithName:@"Avenir Next Medium" size:16];
+//    points100000.textAlignment = NSTextAlignmentCenter;
+//    points100000.alpha = 1.0f;
+//    [iapContainer addSubview:points100000];
+//    
+//    HuesButton *buy100000 = [HuesButton buttonWithColor:[UIColor huesBlue]];
+//    buy100000.frame = CGRectMake(self.view.frame.size.width/2+gap, 2*spacer+labelAndButtonHeight+22+8, self.view.frame.size.width/2 - 2*gap, 30);
+//    [buy100000 setTitle:@"$9.99" forState:UIControlStateNormal];
+//    [buy100000 addTarget:self action:@selector(iapPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [iapContainer addSubview:buy100000];
     
     // Error label
-    errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 90, self.view.frame.size.width, 45)];
+    errorLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 80, self.view.frame.size.width, 35)];
     errorLabel.textAlignment = NSTextAlignmentCenter;
     errorLabel.text = @"Not Enough Points!";
     errorLabel.font = [UIFont fontWithName:@"Avenir" size:20];
@@ -72,6 +164,13 @@
     totalPoints.textColor = [UIColor darkHuesBlueText];
     totalPoints.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
     [self.view addSubview:totalPoints];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPoints) name:@"com.drewsdunne.hues.refreshPoints" object:nil];
+}
+
+- (void)refreshPoints {
+    NSLog(@"Resfreshing");
+    totalPoints.text = [NSString stringWithFormat:@"Total Points: %ld", (long)[[ScoreModel sharedScoreModel] totalPoints]];
 }
 
 - (void)puView:(UIView *)puv didPressPurchase:(BOOL)pressed {
@@ -116,6 +215,10 @@
     [UIView setAnimationDuration:0.25];
     errorLabel.alpha = 0;
     [UIView commitAnimations];
+}
+
+- (void)iapPressed {
+    [self performSegueWithIdentifier:@"iap_push" sender:self];
 }
 
 - (void)didReceiveMemoryWarning {

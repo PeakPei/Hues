@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FD2AC9541CDD035500B8793C /* PowerupView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2AC9531CDD035500B8793C /* PowerupView.m */; };
+		FD33D6C11D41BBBF00B367D7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD33D6C01D41BBBF00B367D7 /* StoreKit.framework */; };
+		FD33D6C41D425FA100B367D7 /* AchievementView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD33D6C31D425FA100B367D7 /* AchievementView.m */; };
 		FD4FA7701CB7437E00F4EE02 /* PauseCover.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4FA76F1CB7437E00F4EE02 /* PauseCover.m */; };
 		FD5C8D8A1B64026A00162DEE /* ScoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5C8D891B64026A00162DEE /* ScoreModel.m */; };
 		FD5C8D8D1B6433CE00162DEE /* GameInfoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5C8D8C1B6433CE00162DEE /* GameInfoButton.m */; };
@@ -18,17 +20,17 @@
 		FD760DA31B5F2C7C00C34D7E /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD760DA21B5F2C7C00C34D7E /* GridView.m */; };
 		FD8DDC3F1B7A8A53000087F2 /* ScoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8DDC3E1B7A8A53000087F2 /* ScoresViewController.m */; };
 		FD8DDC421B7A945D000087F2 /* PowerupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8DDC411B7A945D000087F2 /* PowerupsViewController.m */; };
-		FDA088031CD10A59005B7851 /* PowerupDescView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA088021CD10A59005B7851 /* PowerupDescView.m */; };
-		FDA39F711CD40E7500A72909 /* PowerupPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA39F701CD40E7500A72909 /* PowerupPurchaseView.m */; };
 		FDB502331B70119100426778 /* HuesButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB502321B70119100426778 /* HuesButton.m */; };
+		FDBFC80F1D44022800EA5CEC /* HuesAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC80E1D44022800EA5CEC /* HuesAlert.m */; };
+		FDBFC8121D442C7C00EA5CEC /* IAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC8111D442C7C00EA5CEC /* IAPViewController.m */; };
+		FDBFC8191D4440F700EA5CEC /* IAPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC8171D4440F700EA5CEC /* IAPTableViewCell.m */; };
+		FDBFC81A1D4440F700EA5CEC /* IAPTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBFC8181D4440F700EA5CEC /* IAPTableViewCell.xib */; };
 		FDC23AF01B4B5DD700C6CB34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC23AEF1B4B5DD700C6CB34 /* main.m */; };
 		FDC23AF31B4B5DD700C6CB34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC23AF21B4B5DD700C6CB34 /* AppDelegate.m */; };
-		FDC23AF61B4B5DD700C6CB34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC23AF51B4B5DD700C6CB34 /* ViewController.m */; };
 		FDC23AF91B4B5DD700C6CB34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDC23AF71B4B5DD700C6CB34 /* Main.storyboard */; };
 		FDC23AFB1B4B5DD700C6CB34 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDC23AFA1B4B5DD700C6CB34 /* Images.xcassets */; };
 		FDC23AFE1B4B5DD700C6CB34 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDC23AFC1B4B5DD700C6CB34 /* LaunchScreen.xib */; };
 		FDC23B0A1B4B5DD700C6CB34 /* HuesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC23B091B4B5DD700C6CB34 /* HuesTests.m */; };
-		FDC23B161B4B5E9500C6CB34 /* GridContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC23B151B4B5E9500C6CB34 /* GridContainer.m */; };
 		FDC23B191B4B617D00C6CB34 /* UIColor+Hues.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC23B181B4B617D00C6CB34 /* UIColor+Hues.m */; };
 		FDC72BC41B608CDA00598177 /* UIControl+SoundForControlEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC72BC31B608CDA00598177 /* UIControl+SoundForControlEvents.m */; };
 		FDC72BC71B608D5000598177 /* touch.wav in Resources */ = {isa = PBXBuildFile; fileRef = FDC72BC61B608D5000598177 /* touch.wav */; };
@@ -56,6 +58,9 @@
 /* Begin PBXFileReference section */
 		FD2AC9521CDD035500B8793C /* PowerupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerupView.h; sourceTree = "<group>"; };
 		FD2AC9531CDD035500B8793C /* PowerupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerupView.m; sourceTree = "<group>"; };
+		FD33D6C01D41BBBF00B367D7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		FD33D6C21D425FA100B367D7 /* AchievementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementView.h; sourceTree = "<group>"; };
+		FD33D6C31D425FA100B367D7 /* AchievementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementView.m; sourceTree = "<group>"; };
 		FD4FA76E1CB7437E00F4EE02 /* PauseCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseCover.h; sourceTree = "<group>"; };
 		FD4FA76F1CB7437E00F4EE02 /* PauseCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseCover.m; sourceTree = "<group>"; };
 		FD5C8D881B64026A00162DEE /* ScoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreModel.h; sourceTree = "<group>"; };
@@ -74,27 +79,26 @@
 		FD8DDC3E1B7A8A53000087F2 /* ScoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoresViewController.m; sourceTree = "<group>"; };
 		FD8DDC401B7A945D000087F2 /* PowerupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerupsViewController.h; sourceTree = "<group>"; };
 		FD8DDC411B7A945D000087F2 /* PowerupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerupsViewController.m; sourceTree = "<group>"; };
-		FDA088011CD10A59005B7851 /* PowerupDescView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerupDescView.h; sourceTree = "<group>"; };
-		FDA088021CD10A59005B7851 /* PowerupDescView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerupDescView.m; sourceTree = "<group>"; };
-		FDA39F6F1CD40E7500A72909 /* PowerupPurchaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerupPurchaseView.h; sourceTree = "<group>"; };
-		FDA39F701CD40E7500A72909 /* PowerupPurchaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerupPurchaseView.m; sourceTree = "<group>"; };
 		FDB502311B70119100426778 /* HuesButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuesButton.h; sourceTree = "<group>"; };
 		FDB502321B70119100426778 /* HuesButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuesButton.m; sourceTree = "<group>"; };
+		FDBFC80D1D44022800EA5CEC /* HuesAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuesAlert.h; sourceTree = "<group>"; };
+		FDBFC80E1D44022800EA5CEC /* HuesAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuesAlert.m; sourceTree = "<group>"; };
+		FDBFC8101D442C7C00EA5CEC /* IAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPViewController.h; sourceTree = "<group>"; };
+		FDBFC8111D442C7C00EA5CEC /* IAPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPViewController.m; sourceTree = "<group>"; };
+		FDBFC8161D4440F700EA5CEC /* IAPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPTableViewCell.h; sourceTree = "<group>"; };
+		FDBFC8171D4440F700EA5CEC /* IAPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPTableViewCell.m; sourceTree = "<group>"; };
+		FDBFC8181D4440F700EA5CEC /* IAPTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IAPTableViewCell.xib; sourceTree = "<group>"; };
 		FDC23AEA1B4B5DD700C6CB34 /* Hues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hues.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDC23AEE1B4B5DD700C6CB34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDC23AEF1B4B5DD700C6CB34 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FDC23AF11B4B5DD700C6CB34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FDC23AF21B4B5DD700C6CB34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FDC23AF41B4B5DD700C6CB34 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FDC23AF51B4B5DD700C6CB34 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FDC23AF81B4B5DD700C6CB34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FDC23AFA1B4B5DD700C6CB34 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FDC23AFD1B4B5DD700C6CB34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		FDC23B031B4B5DD700C6CB34 /* HuesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDC23B081B4B5DD700C6CB34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDC23B091B4B5DD700C6CB34 /* HuesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HuesTests.m; sourceTree = "<group>"; };
-		FDC23B141B4B5E9500C6CB34 /* GridContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridContainer.h; sourceTree = "<group>"; };
-		FDC23B151B4B5E9500C6CB34 /* GridContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridContainer.m; sourceTree = "<group>"; };
 		FDC23B171B4B617D00C6CB34 /* UIColor+Hues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hues.h"; sourceTree = "<group>"; };
 		FDC23B181B4B617D00C6CB34 /* UIColor+Hues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hues.m"; sourceTree = "<group>"; };
 		FDC72BC21B608CDA00598177 /* UIControl+SoundForControlEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+SoundForControlEvents.h"; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDFF8C021B4CBD8300190325 /* GameKit.framework in Frameworks */,
+				FD33D6C11D41BBBF00B367D7 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,17 +141,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FD760DA41B5F2D1000C34D7E /* Old Game Views */ = {
-			isa = PBXGroup;
-			children = (
-				FDC23AF41B4B5DD700C6CB34 /* ViewController.h */,
-				FDC23AF51B4B5DD700C6CB34 /* ViewController.m */,
-				FDC23B141B4B5E9500C6CB34 /* GridContainer.h */,
-				FDC23B151B4B5E9500C6CB34 /* GridContainer.m */,
-			);
-			name = "Old Game Views";
-			sourceTree = "<group>";
-		};
 		FDC23AE11B4B5DD700C6CB34 = {
 			isa = PBXGroup;
 			children = (
@@ -174,12 +168,11 @@
 				FD5C8D881B64026A00162DEE /* ScoreModel.h */,
 				FD5C8D891B64026A00162DEE /* ScoreModel.m */,
 				FDC7D4C81B60937200942322 /* View Controllers */,
-				FDC7D4C71B60936700942322 /* Custom Views */,
-				FD760DA41B5F2D1000C34D7E /* Old Game Views */,
+				FDC7D4C71B60936700942322 /* Views */,
+				FDC7D4C91B60938300942322 /* Categories */,
 				FDC23AF71B4B5DD700C6CB34 /* Main.storyboard */,
 				FDC23AFA1B4B5DD700C6CB34 /* Images.xcassets */,
 				FDC72BC51B608D4400598177 /* Sounds */,
-				FDC7D4C91B60938300942322 /* Categories */,
 				FDC23AFC1B4B5DD700C6CB34 /* LaunchScreen.xib */,
 				FDC23AED1B4B5DD700C6CB34 /* Supporting Files */,
 			);
@@ -225,7 +218,7 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		FDC7D4C71B60936700942322 /* Custom Views */ = {
+		FDC7D4C71B60936700942322 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				FD760DA11B5F2C7C00C34D7E /* GridView.h */,
@@ -238,20 +231,23 @@
 				FDFF8BFF1B4CAC2200190325 /* GameInfoView.m */,
 				FD4FA76E1CB7437E00F4EE02 /* PauseCover.h */,
 				FD4FA76F1CB7437E00F4EE02 /* PauseCover.m */,
-				FDA39F6F1CD40E7500A72909 /* PowerupPurchaseView.h */,
-				FDA39F701CD40E7500A72909 /* PowerupPurchaseView.m */,
+				FDBFC80D1D44022800EA5CEC /* HuesAlert.h */,
+				FDBFC80E1D44022800EA5CEC /* HuesAlert.m */,
 				FDB502311B70119100426778 /* HuesButton.h */,
 				FDB502321B70119100426778 /* HuesButton.m */,
 				FDC7D4D71B62D76200942322 /* DividerView.h */,
 				FDC7D4D81B62D76200942322 /* DividerView.m */,
 				FDC7D4DA1B62D95100942322 /* NavView.h */,
 				FDC7D4DB1B62D95100942322 /* NavView.m */,
-				FDA088011CD10A59005B7851 /* PowerupDescView.h */,
-				FDA088021CD10A59005B7851 /* PowerupDescView.m */,
 				FD2AC9521CDD035500B8793C /* PowerupView.h */,
 				FD2AC9531CDD035500B8793C /* PowerupView.m */,
+				FD33D6C21D425FA100B367D7 /* AchievementView.h */,
+				FD33D6C31D425FA100B367D7 /* AchievementView.m */,
+				FDBFC8161D4440F700EA5CEC /* IAPTableViewCell.h */,
+				FDBFC8171D4440F700EA5CEC /* IAPTableViewCell.m */,
+				FDBFC8181D4440F700EA5CEC /* IAPTableViewCell.xib */,
 			);
-			name = "Custom Views";
+			name = Views;
 			sourceTree = "<group>";
 		};
 		FDC7D4C81B60937200942322 /* View Controllers */ = {
@@ -267,6 +263,8 @@
 				FD8DDC3E1B7A8A53000087F2 /* ScoresViewController.m */,
 				FD8DDC401B7A945D000087F2 /* PowerupsViewController.h */,
 				FD8DDC411B7A945D000087F2 /* PowerupsViewController.m */,
+				FDBFC8101D442C7C00EA5CEC /* IAPViewController.h */,
+				FDBFC8111D442C7C00EA5CEC /* IAPViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -287,6 +285,7 @@
 		FDFF8C031B4CBD9B00190325 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD33D6C01D41BBBF00B367D7 /* StoreKit.framework */,
 				FDFF8C011B4CBD8300190325 /* GameKit.framework */,
 			);
 			name = Frameworks;
@@ -337,6 +336,7 @@
 		FDC23AE21B4B5DD700C6CB34 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Drew Dunne";
 				TargetAttributes = {
@@ -345,6 +345,9 @@
 						DevelopmentTeam = F9THZS828N;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 						};
@@ -385,6 +388,7 @@
 				FD5C8D911B64399000162DEE /* skip.wav in Resources */,
 				FD5C8D8F1B6438C600162DEE /* pause.wav in Resources */,
 				FDC7D4CF1B62B8BA00942322 /* correct.wav in Resources */,
+				FDBFC81A1D4440F700EA5CEC /* IAPTableViewCell.xib in Resources */,
 				FDC7D4D01B62B8BA00942322 /* incorrect.wav in Resources */,
 				FDC72BC71B608D5000598177 /* touch.wav in Resources */,
 			);
@@ -420,29 +424,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDA39F711CD40E7500A72909 /* PowerupPurchaseView.m in Sources */,
-				FDA088031CD10A59005B7851 /* PowerupDescView.m in Sources */,
+				FDBFC8121D442C7C00EA5CEC /* IAPViewController.m in Sources */,
 				FDC7D4CC1B62B50000942322 /* GameOverViewController.m in Sources */,
 				FD760D9D1B5DC4ED00C34D7E /* TileButton.m in Sources */,
-				FDC23AF61B4B5DD700C6CB34 /* ViewController.m in Sources */,
 				FD2AC9541CDD035500B8793C /* PowerupView.m in Sources */,
 				FDC23AF31B4B5DD700C6CB34 /* AppDelegate.m in Sources */,
 				FD5C8D8A1B64026A00162DEE /* ScoreModel.m in Sources */,
 				FD8DDC421B7A945D000087F2 /* PowerupsViewController.m in Sources */,
 				FDC7D4C61B6092D400942322 /* GameViewController.m in Sources */,
 				FDC23AF01B4B5DD700C6CB34 /* main.m in Sources */,
+				FDBFC80F1D44022800EA5CEC /* HuesAlert.m in Sources */,
 				FD760DA01B5F2C3800C34D7E /* HomeViewController.m in Sources */,
 				FDC7D4D61B62C30D00942322 /* NSString+MD5.m in Sources */,
 				FDC7D4D91B62D76200942322 /* DividerView.m in Sources */,
 				FD4FA7701CB7437E00F4EE02 /* PauseCover.m in Sources */,
 				FD8DDC3F1B7A8A53000087F2 /* ScoresViewController.m in Sources */,
 				FD5C8D8D1B6433CE00162DEE /* GameInfoButton.m in Sources */,
-				FDC23B161B4B5E9500C6CB34 /* GridContainer.m in Sources */,
+				FDBFC8191D4440F700EA5CEC /* IAPTableViewCell.m in Sources */,
 				FDFF8C001B4CAC2200190325 /* GameInfoView.m in Sources */,
 				FDC7D4DC1B62D95100942322 /* NavView.m in Sources */,
 				FD760DA31B5F2C7C00C34D7E /* GridView.m in Sources */,
 				FDC23B191B4B617D00C6CB34 /* UIColor+Hues.m in Sources */,
 				FDB502331B70119100426778 /* HuesButton.m in Sources */,
+				FD33D6C41D425FA100B367D7 /* AchievementView.m in Sources */,
 				FDC72BC41B608CDA00598177 /* UIControl+SoundForControlEvents.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,6 +576,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Hues/Info.plist;
@@ -580,6 +585,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drewsdunne.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Hues/Hues-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -587,6 +595,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Hues/Info.plist;
@@ -595,6 +604,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.drewsdunne.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Hues/Hues-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

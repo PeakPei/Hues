@@ -27,7 +27,7 @@
     
     //Create the Subtitle Label
     subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y+titleLabel.frame.size.height+8, self.view.frame.size.width, 22)];
-    subtitleLabel.text = @"test your eyesight";
+    subtitleLabel.text = @"touch the square";
     subtitleLabel.textColor = [UIColor colorWithRed:86/255.00 green:150/255.00 blue:199/255.00 alpha:1];
     subtitleLabel.font = [UIFont fontWithName:@"Avenir Next Medium" size:20];
     subtitleLabel.textAlignment = NSTextAlignmentCenter;

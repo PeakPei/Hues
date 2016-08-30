@@ -17,7 +17,9 @@ void GVControlSoundManagerAudioServicesSystemSoundCompletionProc (SystemSoundID 
     AudioServicesDisposeSystemSoundID(soundID);
 }
 
-@interface GameViewController ()
+@interface GameViewController () {
+    BOOL isNewHighScore;
+}
 
 @end
 
@@ -28,7 +30,8 @@ void GVControlSoundManagerAudioServicesSystemSoundCompletionProc (SystemSoundID 
     
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     selectedColor = [UIColor getRandomHue];
-    
+    selectedColorName = selectedColor.getHuesColor;
+    [[ScoreModel sharedScoreModel] newGame];
     
     gameInfoView = [[GameInfoView alloc] initWithFrame:CGRectMake(0, /*0-GameInfoViewHeight-1*/0, self.view.frame.size.width, GameInfoViewHeight)];
     [gameInfoView.pause addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
@@ -52,6 +55,12 @@ void GVControlSoundManagerAudioServicesSystemSoundCompletionProc (SystemSoundID 
     pauseView.delegate = self;
     [self.view addSubview:pauseView];
     
+    newHighAlert = [[HuesAlert alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    newHighAlert.delegate = self;
+    [newHighAlert setTitle:@"New High Score!"];
+    [newHighAlert setDismissButtonText:@"Awesome"];
+    [self.view addSubview:newHighAlert];
+    
     shouldRestartGame = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restartGameReceived) name:@"com.drewsdunne.hues.restartGame" object:nil];
@@ -61,6 +70,8 @@ void GVControlSoundManagerAudioServicesSystemSoundCompletionProc (SystemSoundID 
 - (void)viewWillAppear:(BOOL)animated {
     if (shouldRestartGame) {
         selectedColor = [UIColor getRandomHue];
+        selectedColorName = selectedColor.getHuesColor;
+        [[ScoreModel sharedScoreModel] newGame];
         [self resetScore];
         [self reset];
         [gridView updateTileImagesAnimated:false];
@@ -164,7 +175,7 @@ void GVControlSoundManagerAudioServicesSystemSoundCompletionProc (SystemSoundID 
         [gameInfoView enablePowerups:false];
         // Animate
         [gameInfoView flashTime];
-        time += 50;
+        time += 100;
     } else {
         [self noPUAlert];
     }
@@ -186,6 +197,10 @@ void GVControlSoundManagerAudioServicesSystemSoundCompletionProc (SystemSoundID 
 }
 
 - (void)gridContainerTileWasPressed:(NSInteger)tile {
+    
+    // For testing:
+//    tile = discoloredTile;
+    
     [gridView showResponse:(tile == discoloredTile) onTile:tile];
     [gameTimer invalidate];
     if (tile == discoloredTile) {
@@ -235,7 +250,7 @@ void GVControlSoundManagerAudioServicesSystemSoundCompletionProc (SystemSoundID 
 //}
 
 - (void)addToScore {
-    NSInteger add = (NSInteger)(((time)/10) + (fabs(15*log(fabs(varyH)))-63));
+    NSInteger add = (NSInteger)(((time)/10) + (fabs(15*log(fabs(varyH)))-56));
     NSLog(@"%ld",(long)add);
     score += add;
     
@@ -320,14 +335,22 @@ void GVControlSoundManagerAudioServicesSystemSoundCompletionProc (SystemSoundID 
         [self performSegueWithIdentifier:@"gameOver" sender:nil];
     }
     
-    const double mult = -0.035;
-    double comult = (double)(hue);
-    if (comult >= 0.5) {
-        comult -= 0.5;
-    } else {
-        comult /= 3;
+    double mult = -0.035;
+    double coef = 0.020;
+    switch (selectedColorName) {
+        case HuesBlue:
+            coef = 0.016;
+            break;
+        case HuesGreen:
+            coef = 0.022;
+            break;
+        case HuesPink:
+            coef = 0.020;
+            break;
+            
+        default:
+            break;
     }
-    double coef = 0.02*comult;
     varyH = (CGFloat)((coef*pow(M_E, mult*round) + 0.005) * pow((double)(-1), (double)(arc4random()%2)));
     
     NSLog(@"%f",varyH);
@@ -359,17 +382,22 @@ void GVControlSoundManagerAudioServicesSystemSoundCompletionProc (SystemSoundID 
     
     //[gridContainer updateTilesAnimated:true];
     [gridContainer sizeToWidth:sideLength atPoint:[self originPointForSize:sideLength] animated:true];*/
-    [self performSegueWithIdentifier:@"gameOver" sender:nil];
+    if (!isNewHighScore) {
+        [self performSegueWithIdentifier:@"gameOver" sender:nil];
+    } else {
+        [newHighAlert show];
+    }
 }
 
 - (void)reportScore {
     //Create game hash
-    NSString *scoreString = [NSString stringWithFormat:@"F3A7%ld1G9E",(long)score];
+    NSString *scoreString = [NSString stringWithFormat:@"F3A7%ld1G9E",(long)(score+round+selectedColorName)];
     NSMutableString *hash = [scoreString MD5String].mutableCopy;
-    BOOL isNewHighScore = [[ScoreModel sharedScoreModel] reportScore:score withHash:hash];
-    if (isNewHighScore) {
-        
-    }
+    isNewHighScore = [[ScoreModel sharedScoreModel] reportScore:score andAmount:round ofColor:selectedColorName withHash:hash];
+}
+
+- (void)alert:(UIView *)view didExitWithButtonIndex:(HuesAlertIndex)index {
+    [self performSegueWithIdentifier:@"gameOver" sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -11,6 +11,7 @@
 #import "PowerupView.h"
 #import "ScoreModel.h"
 #import "DividerView.h"
+#import "HuesButton.h"
 
 @interface PowerupsViewController : UIViewController <PowerupViewDelegate> {
 //    PowerupPurchaseView *purchaseView;

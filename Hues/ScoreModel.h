@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 #import "AppDelegate.h"
+#import "UIColor+Hues.h"
 
 typedef enum : NSUInteger {
     PUSkip,
@@ -27,12 +28,31 @@ typedef enum : NSUInteger {
 @property (nonatomic) NSInteger totalAddTime;
 @property (nonatomic) NSInteger total2x2;
 
+// Achievements
+@property (nonatomic) NSInteger totalBlues;
+@property (nonatomic) NSInteger totalGreens;
+@property (nonatomic) NSInteger totalPinks;
+@property (nonatomic) NSInteger highestStreak;
+
+@property (nonatomic) BOOL hasBlueMaster;
+@property (nonatomic) BOOL hasGreenMaster;
+@property (nonatomic) BOOL hasPinkMaster;
+@property (nonatomic) BOOL hasGettingHot;
+@property (nonatomic) BOOL hasOnFire;
+@property (nonatomic) BOOL hasBlazing;
+@property (nonatomic) BOOL hasHueMaster;
+@property (nonatomic) BOOL hasDiscoFreak;
+
 + (instancetype)sharedScoreModel;
 - (id)init;
 
 - (void)saveData;
 
-- (BOOL)reportScore:(NSInteger)score withHash:(NSString *)hash;
+- (void)newGame;
+- (NSArray *)getNewUnlocks;
+- (BOOL)reportScore:(NSInteger)score andAmount:(NSInteger)amount ofColor:(HuesColor)color withHash:(NSString *)hash;
+
+- (BOOL)purchasedPoints:(NSInteger)addedPoints withTransaction:(NSString *)transID withHash:(NSString *)hash;
 
 - (BOOL)purchasePowerupWithType:(PUType)puType;
 
@@ -45,6 +65,8 @@ typedef enum : NSUInteger {
 - (BOOL)purchase2x2Powerup;
 - (BOOL)use2x2Powerup;
 
+- (NSArray *)achievementKeys;
+- (NSDictionary *)achievementInfoForKey:(NSString *)key;
 - (NSString *)titleForPUType:(PUType)powerupType;
 - (NSInteger)priceForPUType:(PUType)powerupType;
 - (NSInteger)amountForPUType:(PUType)powerupType;

@@ -9,11 +9,21 @@
 #import "ScoreModel.h"
 #import "NSString+MD5.h"
 
-const NSInteger POWERUP_SKIP_COST = 500;
-const NSInteger POWERUP_2x2_COST = 250;
-const NSInteger POWERUP_ADDTIME_COST = 100;
+const NSInteger POWERUP_SKIP_COST = 2500;
+const NSInteger POWERUP_2x2_COST = 1000;
+const NSInteger POWERUP_ADDTIME_COST = 500;
+
+const NSInteger ACHIEVEMENT_BONUS_1 = 500;
+const NSInteger ACHIEVEMENT_BONUS_2 = 1000;
+const NSInteger ACHIEVEMENT_BONUS_3 = 1500;
 
 static NSString *leaderboardID = @"threebythree.hues";
+
+@interface ScoreModel () {
+    NSMutableArray *newUnlocks;
+}
+
+@end
 
 @implementation ScoreModel
 
@@ -32,7 +42,10 @@ static NSString *leaderboardID = @"threebythree.hues";
     self = [super init];
     if (self) {
         appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
+        _totalSkips = 1;
+        _total2x2 = 2;
+        _totalAddTime = 3;
+        newUnlocks = [[NSMutableArray alloc] init];
         //Get the total points
 //        _totalPoints = [[NSUserDefaults standardUserDefaults] integerForKey:@"total_points"];
 //        NSString *totalPointsHash = [[NSUserDefaults standardUserDefaults] valueForKey:@"Hd4yG34D7e"];
@@ -76,6 +89,19 @@ static NSString* const HDataTotalSkipsKey = @"totalSkips";
 static NSString* const HDataTotal2x2Key = @"total2x2s";
 static NSString* const HDataTotalAddTimeKey = @"totalAddTimes";
 
+static NSString* const HDataTotalBluesKey = @"totalBlues";
+static NSString* const HDataTotalGreensKey = @"totalGreens";
+static NSString* const HDataTotalPinksKey = @"totalPinks";
+static NSString* const HDataHighestStreakKey = @"highestStreak";
+static NSString* const HDataHasBlueMasterKey = @"hasBlueMaster";
+static NSString* const HDataHasGreenMasterKey = @"hasGreenMaster";
+static NSString* const HDataHasPinkMasterKey = @"hasPinkMaster";
+static NSString* const HDataHasGettingHotKey = @"hasGettingHot";
+static NSString* const HDataHasOnFireKey = @"hasOnFire";
+static NSString* const HDataHasBlazingKey = @"hasBlazing";
+static NSString* const HDataHasHueMasterKey = @"hasHueMaster";
+static NSString* const HDataHasDiscoFreakKey = @"hasDiscoFreak";
+
 - (void)encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeInteger:self.totalPoints forKey:HDataTotalPointsKey];
     [encoder encodeInteger:self.highScore forKey: HDataHighScoreKey];
@@ -83,6 +109,19 @@ static NSString* const HDataTotalAddTimeKey = @"totalAddTimes";
     [encoder encodeInteger:self.totalSkips forKey: HDataTotalSkipsKey];
     [encoder encodeInteger:self.total2x2 forKey: HDataTotal2x2Key];
     [encoder encodeInteger:self.totalAddTime forKey: HDataTotalAddTimeKey];
+    
+    [encoder encodeInteger:self.totalBlues forKey: HDataTotalBluesKey];
+    [encoder encodeInteger:self.totalGreens forKey: HDataTotalGreensKey];
+    [encoder encodeInteger:self.totalPinks forKey: HDataTotalPinksKey];
+    [encoder encodeInteger:self.highestStreak forKey: HDataHighestStreakKey];
+    [encoder encodeBool:self.hasBlueMaster forKey: HDataHasBlueMasterKey];
+    [encoder encodeBool:self.hasGreenMaster forKey: HDataHasGreenMasterKey];
+    [encoder encodeBool:self.hasPinkMaster forKey: HDataHasPinkMasterKey];
+    [encoder encodeBool:self.hasGettingHot forKey: HDataHasGettingHotKey];
+    [encoder encodeBool:self.hasOnFire forKey: HDataHasOnFireKey];
+    [encoder encodeBool:self.hasBlazing forKey: HDataHasBlazingKey];
+    [encoder encodeBool:self.hasHueMaster forKey: HDataHasHueMasterKey];
+    [encoder encodeBool:self.hasDiscoFreak forKey: HDataHasDiscoFreakKey];
 }
 
 + (instancetype)loadInstance
@@ -105,9 +144,28 @@ static NSString* const HDataTotalAddTimeKey = @"totalAddTimes";
         _totalSkips = [decoder decodeIntegerForKey: HDataTotalSkipsKey];
         _total2x2 = [decoder decodeIntegerForKey: HDataTotal2x2Key];
         _totalAddTime = [decoder decodeIntegerForKey: HDataTotalAddTimeKey];
-        _totalSkips = 100;
-        _total2x2 = 100;
-        _totalAddTime = 100;
+        
+        _totalBlues = [decoder decodeIntegerForKey: HDataTotalBluesKey];
+        _totalGreens = [decoder decodeIntegerForKey: HDataTotalGreensKey];
+        _totalPinks = [decoder decodeIntegerForKey: HDataTotalPinksKey];
+        _highestStreak = [decoder decodeIntegerForKey: HDataHighestStreakKey];
+        _hasBlueMaster = [decoder decodeBoolForKey: HDataHasBlueMasterKey];
+        _hasGreenMaster = [decoder decodeBoolForKey: HDataHasGreenMasterKey];
+        _hasPinkMaster = [decoder decodeBoolForKey: HDataHasPinkMasterKey];
+        _hasGettingHot = [decoder decodeBoolForKey: HDataHasGettingHotKey];
+        _hasOnFire = [decoder decodeBoolForKey: HDataHasOnFireKey];
+        _hasBlazing = [decoder decodeBoolForKey: HDataHasBlazingKey];
+        _hasHueMaster = [decoder decodeBoolForKey: HDataHasHueMasterKey];
+        _hasDiscoFreak = [decoder decodeBoolForKey: HDataHasDiscoFreakKey];
+        
+        appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        newUnlocks = [[NSMutableArray alloc] init];
+        // For testing:
+//        _totalSkips = 100;
+//        _total2x2 = 100;
+//        _totalAddTime = 100;
+//        _hasBlueMaster = true;
+//        _highScore = 0;
     }
     return self;
 }
@@ -117,9 +175,29 @@ static NSString* const HDataTotalAddTimeKey = @"totalAddTimes";
     [encodedData writeToFile:[ScoreModel filePath] atomically:YES];
 }
 
-- (BOOL)reportScore:(NSInteger)score withHash:(NSString *)hash {
+//- (void)checkAchievements {
+//    if (!self.hasBlueMaster) {
+//        
+//    }
+//    if (!self.hasGreenMaster) {
+//        
+//    }
+//    if (!self.hasGreenMaster) {
+//        
+//    }
+//}
+
+- (void)newGame {
+    [newUnlocks removeAllObjects];
+}
+
+- (NSArray *)getNewUnlocks {
+    return newUnlocks;
+}
+
+- (BOOL)reportScore:(NSInteger)score andAmount:(NSInteger)amount ofColor:(HuesColor)color withHash:(NSString *)hash {
     
-    NSString *scoreString = [NSString stringWithFormat:@"F3A7%ld1G9E",(long)score];
+    NSString *scoreString = [NSString stringWithFormat:@"F3A7%ld1G9E",(long)(score+amount+color)];
     NSMutableString *magicCheck = [scoreString MD5String].mutableCopy;
     
     if (![hash isEqualToString:magicCheck]) {
@@ -128,9 +206,79 @@ static NSString* const HDataTotalAddTimeKey = @"totalAddTimes";
 //        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"high_score"];
         return false;
     } else {
+        self.totalPoints += score;
         self.latestScore = score;
         BOOL newHigh = score > self.highScore;
         self.highScore = MAX(self.highScore, self.latestScore);
+        self.highestStreak = MAX(self.highestStreak, amount);
+        if (self.highestStreak >= 100 && !self.hasBlazing) {
+            self.hasBlazing = true;
+            [newUnlocks addObject:HDataHasBlazingKey];
+            self.totalPoints += ACHIEVEMENT_BONUS_3;
+            // Give Blazing
+            if (!self.hasOnFire) {
+                self.hasOnFire = true;
+                [newUnlocks addObject:HDataHasOnFireKey];
+                // Give bonus
+                self.totalPoints += ACHIEVEMENT_BONUS_2;
+            }
+            if (!self.hasGettingHot) {
+                self.hasGettingHot = true;
+                [newUnlocks addObject:HDataHasGettingHotKey];
+                // Give bonus
+                self.totalPoints += ACHIEVEMENT_BONUS_1;
+            }
+        } else if (self.highestStreak >= 50 && !self.hasOnFire) {
+            self.hasOnFire = true;
+            [newUnlocks addObject:HDataHasOnFireKey];
+            self.totalPoints += ACHIEVEMENT_BONUS_2;
+            // Give bonus
+            if (!self.hasGettingHot) {
+                self.hasGettingHot = true;
+                [newUnlocks addObject:HDataHasGettingHotKey];
+                self.totalPoints += ACHIEVEMENT_BONUS_1;
+                // Give bonus
+            }
+        } else if (self.highestStreak >= 25 && !self.hasGettingHot) {
+            self.hasGettingHot = true;
+            [newUnlocks addObject:HDataHasGettingHotKey];
+            self.totalPoints += ACHIEVEMENT_BONUS_1;
+            // Give bonus
+        }
+        switch (color) {
+            case HuesBlue:
+                self.totalBlues++;
+                if (self.totalBlues == 1000) {
+                    self.hasBlueMaster = true;
+                    [newUnlocks addObject:HDataHasBlueMasterKey];
+                    self.totalPoints += ACHIEVEMENT_BONUS_2;
+                }
+                break;
+            case HuesGreen:
+                self.totalGreens++;
+                if (self.totalGreens == 1000) {
+                    self.hasGreenMaster = true;
+                    [newUnlocks addObject:HDataHasGreenMasterKey];
+                    self.totalPoints += ACHIEVEMENT_BONUS_2;
+                }
+                break;
+            case HuesPink:
+                self.totalPinks++;
+                if (self.totalPinks == 1000) {
+                    self.hasPinkMaster = true;
+                    [newUnlocks addObject:HDataHasPinkMasterKey];
+                    self.totalPoints += ACHIEVEMENT_BONUS_2;
+                }
+                break;
+                
+            default:
+                break;
+        }
+        if (self.hasBlueMaster && self.hasGreenMaster && self.hasPinkMaster && !self.hasHueMaster) {
+            self.hasHueMaster = true;
+            [newUnlocks addObject:HDataHasHueMasterKey];
+            self.totalPoints += ACHIEVEMENT_BONUS_3;
+        }
 //        NSInteger prevHighScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"high_score"];
 //        BOOL newHigh = false;
 //        if (score > prevHighScore) {
@@ -142,7 +290,6 @@ static NSString* const HDataTotalAddTimeKey = @"totalAddTimes";
 //        [[NSUserDefaults standardUserDefaults] setValue:hash forKey:@"^RFH&)#D"];
 //        [[NSUserDefaults standardUserDefaults] setInteger:score forKey:@"latest_score"];
         
-        self.totalPoints += score;
 //        NSString *totalPointsString = [NSString stringWithFormat:@"RF6H%ld9UD4",(long)self.totalPoints];
 //        NSMutableString *magicTotal = [totalPointsString MD5String].mutableCopy;
 //        [[NSUserDefaults standardUserDefaults] setValue:magicTotal forKey:@"Hd4yG34D7e"];
@@ -164,6 +311,18 @@ static NSString* const HDataTotalAddTimeKey = @"totalAddTimes";
         }
         
         return newHigh;
+    }
+    return false;
+}
+
+- (BOOL)purchasedPoints:(NSInteger)addedPoints withTransaction:(NSString *)transID withHash:(NSString *)hash {
+    NSString *pointsString = [NSString stringWithFormat:@"aW2f3d3bf%ldhey%@8e6G",(long)(addedPoints),transID];
+    NSMutableString *magicCheck = [pointsString MD5String].mutableCopy;
+    if ([hash isEqualToString:magicCheck]) {
+        self.totalPoints += addedPoints;
+        NSLog(@"New Points: %ld",(long)self.totalPoints);
+        [self saveData];
+        return true;
     }
     return false;
 }
@@ -245,8 +404,8 @@ static NSString* const HDataTotalAddTimeKey = @"totalAddTimes";
 }
 
 - (BOOL)purchase2x2Powerup {
-    if (self.totalPoints >= POWERUP_ADDTIME_COST) {
-        self.totalPoints -= POWERUP_ADDTIME_COST;
+    if (self.totalPoints >= POWERUP_2x2_COST) {
+        self.totalPoints -= POWERUP_2x2_COST;
         self.total2x2++;
         
 //        NSString *totalPointsString = [NSString stringWithFormat:@"RF6H%ld9UD4",(long)self.totalPoints];
@@ -299,6 +458,61 @@ static NSString* const HDataTotalAddTimeKey = @"totalAddTimes";
             break;
     }
     return false;
+}
+
+- (NSArray *)achievementKeys {
+    if (self.hasDiscoFreak)
+        return @[HDataHasGettingHotKey,
+                 HDataHasOnFireKey,
+                 HDataHasBlazingKey,
+                 HDataHasBlueMasterKey,
+                 HDataHasGreenMasterKey,
+                 HDataHasPinkMasterKey,
+                 HDataHasHueMasterKey,
+                 HDataHasDiscoFreakKey];
+    return @[HDataHasGettingHotKey,
+             HDataHasOnFireKey,
+             HDataHasBlazingKey,
+             HDataHasBlueMasterKey,
+             HDataHasGreenMasterKey,
+             HDataHasPinkMasterKey,
+             HDataHasHueMasterKey];
+}
+
+- (NSDictionary *)achievementInfoForKey:(NSString *)key {
+    NSDictionary *achievementInfo = @{HDataHasGettingHotKey: @{@"title": @"Getting Hot",
+                                                               @"desc": @"25 in a row",
+                                                               @"status":[NSNumber numberWithBool:self.hasGettingHot],
+                                                               @"bonus": [NSNumber numberWithInteger:ACHIEVEMENT_BONUS_1]},
+                                      HDataHasOnFireKey: @{@"title": @"On Fire",
+                                                           @"desc": @"50 in a row",
+                                                           @"status":[NSNumber numberWithBool:self.hasOnFire],
+                                                           @"bonus": [NSNumber numberWithInteger:ACHIEVEMENT_BONUS_2]},
+                                      HDataHasBlazingKey: @{@"title": @"Blazin'",
+                                                            @"desc": @"100 in a row",
+                                                            @"status":[NSNumber numberWithBool:self.hasBlazing],
+                                                            @"bonus": [NSNumber numberWithInteger:ACHIEVEMENT_BONUS_3]},
+                                      HDataHasBlueMasterKey: @{@"title": @"Blue Master",
+                                                               @"desc": @"1000 Blues Correct",
+                                                               @"status":[NSNumber numberWithBool:self.hasBlueMaster],
+                                                               @"bonus": [NSNumber numberWithInteger:ACHIEVEMENT_BONUS_2]},
+                                      HDataHasGreenMasterKey: @{@"title": @"Green Master",
+                                                                @"desc": @"1000 Greens Correct",
+                                                                @"status":[NSNumber numberWithBool:self.hasGreenMaster],
+                                                                @"bonus": [NSNumber numberWithInteger:ACHIEVEMENT_BONUS_2]},
+                                      HDataHasPinkMasterKey: @{@"title": @"Pink Master",
+                                                               @"desc": @"1000 Pinks Correct",
+                                                               @"status":[NSNumber numberWithBool:self.hasPinkMaster],
+                                                               @"bonus": [NSNumber numberWithInteger:ACHIEVEMENT_BONUS_2]},
+                                      HDataHasHueMasterKey: @{@"title": @"Hue Master",
+                                                               @"desc": @"BGP Master",
+                                                               @"status":[NSNumber numberWithBool:self.hasHueMaster],
+                                                               @"bonus": [NSNumber numberWithInteger:ACHIEVEMENT_BONUS_3]},
+                                      HDataHasDiscoFreakKey: @{@"title": @"Disco Freak",
+                                                               @"desc": @"Unlocked Disco Mode",
+                                                               @"status":[NSNumber numberWithBool:self.hasDiscoFreak],
+                                                               @"bonus": [NSNumber numberWithInteger:ACHIEVEMENT_BONUS_3]}};
+    return [achievementInfo objectForKey:key];
 }
 
 - (NSString *)titleForPUType:(PUType)powerupType {

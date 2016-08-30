@@ -39,6 +39,8 @@
     scoreLabel.text = @"0";
     scoreLabel.textColor = [UIColor huesBlue];
     scoreLabel.font = [UIFont fontWithName:@"Avenir Next Medium" size:75];
+    scoreLabel.minimumScaleFactor = 0.2;
+    scoreLabel.adjustsFontSizeToFitWidth = true;
     scoreLabel.textAlignment = NSTextAlignmentCenter;
     scoreLabel.alpha = 1.0f;
     [self.view addSubview:scoreLabel];
@@ -57,6 +59,8 @@
     highScoreLabel.text = @"0";
     highScoreLabel.textColor = [UIColor huesBlue];
     highScoreLabel.font = [UIFont fontWithName:@"Avenir Next Medium" size:75];
+    highScoreLabel.minimumScaleFactor = 0.2;
+    highScoreLabel.adjustsFontSizeToFitWidth = true;
     highScoreLabel.textAlignment = NSTextAlignmentCenter;
     highScoreLabel.alpha = 1.0f;
     [self.view addSubview:highScoreLabel];
@@ -68,13 +72,13 @@
     [self.view addSubview:horDivider];
     
     
-    
     restartButton = [TileButton buttonWithType:UIButtonTypeCustom];
     double width = self.view.frame.size.width;
     NSInteger spacing = width/60;
     double tileWidth = (width-(3+1)*spacing)/3.00;
+    CGFloat yPos = self.view.frame.size.height - tileWidth - (8 + ((self.view.frame.size.width-40)/2 - tileWidth)/2);
     restartButton.adjustsImageWhenHighlighted = false;
-    restartButton.frame = CGRectMake(16 + ((self.view.frame.size.width-40)/2 - tileWidth)/2, self.view.frame.size.height - tileWidth - (16 + ((self.view.frame.size.width-40)/2 - tileWidth)/2), tileWidth, tileWidth);
+    restartButton.frame = CGRectMake(16 + ((self.view.frame.size.width-40)/2 - tileWidth)/2, yPos, tileWidth, tileWidth);
     [restartButton setImage:[UIImage imageNamed:@"restart.png"] forState:UIControlStateNormal];
     restartButton.backgroundColor = [UIColor huesBlue];
     [restartButton addTarget:self action:@selector(playAgain:) forControlEvents:UIControlEventTouchUpInside];
@@ -87,7 +91,7 @@
     
     storeButton = [TileButton buttonWithType:UIButtonTypeCustom];
     storeButton.adjustsImageWhenHighlighted = false;
-    storeButton.frame = CGRectMake(24+(self.view.frame.size.width-40)/2 + ((self.view.frame.size.width-40)/2 - tileWidth)/2, self.view.frame.size.height - tileWidth - (16 + ((self.view.frame.size.width-40)/2 - tileWidth)/2), tileWidth, tileWidth);
+    storeButton.frame = CGRectMake(24+(self.view.frame.size.width-40)/2 + ((self.view.frame.size.width-40)/2 - tileWidth)/2, yPos, tileWidth, tileWidth);
     [storeButton setImage:[UIImage imageNamed:@"powerups_2.png"] forState:UIControlStateNormal];
     storeButton.backgroundColor = [UIColor huesPink];
     [storeButton addTarget:self action:@selector(storePressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -97,6 +101,55 @@
     storeButton.layer.cornerRadius = 5.0;
     [storeButton addSoundWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"touch" ofType:@"wav"] forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:storeButton];
+    
+    UIScrollView *achievementScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.width*0.2 + 128+2, self.view.frame.size.width, self.view.frame.size.height - (self.view.frame.size.width*0.2 + 128+2) - (self.view.frame.size.height - (yPos-20)))];
+    achievementScroller.showsVerticalScrollIndicator = false;
+    achievementScroller.showsHorizontalScrollIndicator = false;
+    achievementScroller.bounces = true;
+    
+    CGFloat gap = 16;
+    CGFloat textSpacer = 16;
+    CGFloat height = 56;
+    if ([UIScreen mainScreen].bounds.size.width < 375) {
+        height = 48;
+    }
+    CGFloat bonusHeight = 36;
+    
+    UILabel *bonusLabel = [[UILabel alloc] initWithFrame:CGRectMake(achievementScroller.frame.size.width*0.2/2, textSpacer, achievementScroller.frame.size.width*0.8, bonusHeight)];
+    bonusLabel.text = @"No New Achievements";
+    bonusLabel.font = [UIFont fontWithName:@"Avenir" size:20];
+    bonusLabel.textColor = [UIColor darkHuesBlueText];
+    bonusLabel.minimumScaleFactor = 0.2;
+    bonusLabel.adjustsFontSizeToFitWidth = true;
+    bonusLabel.textAlignment = NSTextAlignmentCenter;
+    bonusLabel.alpha = 1.0f;
+    bonusLabel.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
+    bonusLabel.layer.borderWidth = 1;
+    bonusLabel.layer.borderColor = [UIColor colorWithWhite:0.9 alpha:1].CGColor;
+    [achievementScroller addSubview:bonusLabel];
+    
+    NSArray *keys = [[ScoreModel sharedScoreModel] getNewUnlocks];
+    
+    long bonusPoints = 0;
+    long count = keys.count;
+    achievementScroller.contentSize = CGSizeMake(self.view.frame.size.width, 2*textSpacer+bonusHeight+gap*(count/2)+(count/2)*height);
+    for (int i = 0; i < count; i++) {
+        CGRect frame = (i%2 == 0) ? CGRectMake((self.view.frame.size.width*0.2)/2, 2*textSpacer+bonusHeight+gap*(floor(i/2))+height*floor(i/2), self.view.frame.size.width*0.4 - 4, height) : CGRectMake((self.view.frame.size.width*0.2)/2 + self.view.frame.size.width*0.4 + 4, 2*textSpacer+bonusHeight+gap*(floor(i/2))+height*floor(i/2), self.view.frame.size.width*0.4 - 4, height);
+        AchievementView *ach1 = [[AchievementView alloc] initWithFrame:frame];
+        [ach1 setAchievement:keys[i]];
+        [achievementScroller addSubview:ach1];
+        NSDictionary *info = [[ScoreModel sharedScoreModel] achievementInfoForKey:keys[i]];
+        bonusPoints += [info[@"bonus"] integerValue];
+    }
+    if (bonusPoints != 0) {
+        bonusLabel.text = [NSString stringWithFormat:@"+ %ld Points!",bonusPoints];
+        DividerView *horDivider2 = [[DividerView alloc] initWithFrame:CGRectMake((self.view.frame.size.width*0.2)/2, yPos-20, self.view.frame.size.width*0.8, 2)];
+        [self.view addSubview:horDivider2];
+    }
+    
+    [self.view addSubview:achievementScroller];
+    
+    
     
 //    NSInteger latestScore = [[NSUserDefaults standardUserDefaults] integerForKey:@"latest_score"];
 //    NSString *latestHash = [[NSUserDefaults standardUserDefaults] valueForKey:@"^RFH&)#D"];

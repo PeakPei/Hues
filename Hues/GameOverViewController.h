@@ -13,6 +13,7 @@
 #import "NavView.h"
 #import "UIControl+SoundForControlEvents.h"
 #import "ScoreModel.h"
+#import "AchievementView.h"
 
 @interface GameOverViewController : UIViewController {
     UILabel *scoreLabel;

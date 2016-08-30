@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    HuesBlue,
+    HuesGreen,
+    HuesPink,
+} HuesColor;
+
 @interface UIColor (Hues)
 
 //Colors specific to Hues
@@ -22,5 +28,7 @@
 
 + (UIColor *)lighterColorForColor:(UIColor *)c;
 + (UIColor *)darkerColorForColor:(UIColor *)c;
+
+- (HuesColor)getHuesColor;
 
 @end

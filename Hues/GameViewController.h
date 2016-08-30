@@ -14,16 +14,19 @@
 #import "ScoreModel.h"
 //#import "PauseAlertView.h"
 #import "PauseCover.h"
+#import "HuesAlert.h"
 
-@interface GameViewController : UIViewController  <GridViewDelegate, PauseCoverDelegate> {
+@interface GameViewController : UIViewController  <GridViewDelegate, PauseCoverDelegate, HuesAlertDelegate> {
     GridView *gridView;
     GameInfoView *gameInfoView;
     
 //    PauseAlertView *pauseView;
     PauseCover *pauseView;
+    HuesAlert *newHighAlert;
     
     BOOL shouldRestartGame;
     UIColor *selectedColor;
+    HuesColor selectedColorName;
     UIColor *discoloredColor;
     NSInteger discoloredTile;
     NSInteger varyR;

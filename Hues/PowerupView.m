@@ -37,6 +37,7 @@
     buyButton = [HuesButton buttonWithColor:[UIColor huesBlue]];
     buyButton.frame = CGRectMake((self.frame.size.width-84)/2, 85, 84, 30);
     [buyButton setTitle:[NSString stringWithFormat:@"%ld",(long)[[ScoreModel sharedScoreModel] priceForPUType:pu]] forState:UIControlStateNormal];
+    [buyButton addSoundWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"pause" ofType:@"wav"] forControlEvents:UIControlEventTouchDown];
     [buyButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:buyButton];
     
@@ -45,7 +46,11 @@
     totalPUs.layer.borderWidth = 2;
     totalPUs.layer.borderColor = [UIColor colorWithWhite:0.85 alpha:1].CGColor;
     totalPUs.textAlignment = NSTextAlignmentCenter;
-    totalPUs.font = [UIFont monospacedDigitSystemFontOfSize:14 weight:0.1];
+    NSOperatingSystemVersion sysVersion = [[NSProcessInfo processInfo] operatingSystemVersion];
+    if (sysVersion.majorVersion > 8)
+        totalPUs.font = [UIFont monospacedDigitSystemFontOfSize:14 weight:0.1];
+    else
+        totalPUs.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
     totalPUs.textColor = [UIColor darkHuesBlueText];
     [self addSubview:totalPUs];
 }

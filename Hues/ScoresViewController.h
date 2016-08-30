@@ -12,6 +12,7 @@
 #import "NSString+MD5.h"
 #import "UIColor+Hues.h"
 #import "ScoreModel.h"
+#import "AchievementView.h"
 
 @interface ScoresViewController : UIViewController {
     UILabel *scoreLabel;

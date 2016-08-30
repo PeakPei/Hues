@@ -17,7 +17,13 @@ const CGFloat kHuesButtonNormalLineWidth = 2.0;
     HuesButton *button = [HuesButton buttonWithType:UIButtonTypeCustom];
     button.defaultColor = color;
     button.backgroundColor = color;
-    button.titleLabel.font = [UIFont monospacedDigitSystemFontOfSize:14 weight:0.1];
+    NSOperatingSystemVersion sysVersion = [[NSProcessInfo processInfo] operatingSystemVersion];
+    NSLog(@"%ld",(long)sysVersion.majorVersion);
+    if (sysVersion.majorVersion > 8)
+        button.titleLabel.font = [UIFont monospacedDigitSystemFontOfSize:14 weight:0.1];
+    else
+        button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+    
     return button;
 }
 
@@ -30,7 +36,11 @@ const CGFloat kHuesButtonNormalLineWidth = 2.0;
         self.backgroundColor = color;
         [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-        self.titleLabel.font = [UIFont monospacedDigitSystemFontOfSize:12 weight:0.1];
+        NSOperatingSystemVersion sysVersion = [[NSProcessInfo processInfo] operatingSystemVersion];
+        if (sysVersion.majorVersion > 8)
+            self.titleLabel.font = [UIFont monospacedDigitSystemFontOfSize:14 weight:0.1];
+        else
+            self.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
         self.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 8);
         self.layer.cornerRadius = self.bounds.size.height/2;
     }

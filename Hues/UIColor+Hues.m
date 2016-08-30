@@ -59,4 +59,14 @@
     return nil;
 }
 
+- (HuesColor)getHuesColor {
+    if ([self isEqual:[UIColor huesBlue]])
+        return HuesBlue;
+    if ([self isEqual:[UIColor huesGreen]])
+        return HuesGreen;
+    if ([self isEqual:[UIColor huesPink]])
+        return HuesPink;
+    return 0;
+}
+
 @end
